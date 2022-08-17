@@ -1,71 +1,71 @@
 const inquirer = require("inquirer")
 const fs = require("fs")
+const Manager = require('./lib/Manager')
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
 
-// Array of questions for user input
-const managerQuestions = [
-    {
-        type: 'input',
-        name: 'name',
-        message: 'What is your name? (Required)',
-        validate: nameInput => {
-            if (nameInput) {
-                return true
-            } else {
-                console.log('Please enter your name!');
-                return false
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'What is your Employee ID? (Required)',
-        validate: employeeId => {
-            if (employeeId) {
-                return true
-            } else {
-                console.log('Please enter your Employee ID!');
-                return false
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'What is your email address? (Required)',
-        validate: email => {
-            if (email) {
-                return true
-            } else {
-                console.log('Please enter your email address!');
-                return false
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'number',
-        message: 'What is your office number? (Required)',
-        validate: number => {
-            if (number) {
-                return true
-            } else {
-                console.log('Please enter your office number!');
-                return false
-            }
-        }
-    },
-]
+const employees = []
 
-// function to initialize app
 function init() {
-    inquirer.prompt (managerQuestions)
-    // .then(data => {
-    //     writeToFile('./lib/Manager', data)
-    // })
+    createHtml()
+    memberInfo()
 }
 
-// Function call to initialize app
-init();
-
-module.exports = managerQuestions
+// questions for user input
+function memberInfo() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'Enter your name.',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log("Please enter your name!");
+                    return false
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: 'Enter your employee ID.',
+            validate: idInput => {
+                if (idInput) {
+                    return true;
+                } else {
+                    console.log("Please enter your employee ID!");
+                    return false
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Enter your email address.',
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                } else {
+                    console.log("Please enter your email address!");
+                    return false
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'number',
+            message: 'Enter your office number.',
+            validate: numberInput => {
+                if (numberInput) {
+                    return true;
+                } else {
+                    console.log("Please enter your office number!");
+                    return false
+                }
+            }
+        }
+    ])
+}
