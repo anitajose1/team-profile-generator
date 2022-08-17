@@ -3,27 +3,22 @@ const fs = require("fs")
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
+// array for team
+const employeesArr = []
 
-const employees = []
-
-function init() {
-    createHtml()
-    memberInfo()
-}
-
-// questions for user input
-function memberInfo() {
+// questions for manager input
+function managerInfo() {
     inquirer
     .prompt([
         {
             type: 'input',
             name: 'name',
-            message: 'Enter your name.',
+            message: "Who is the manager of this team?",
             validate: nameInput => {
                 if (nameInput) {
                     return true;
                 } else {
-                    console.log("Please enter your name!");
+                    console.log("Please enter the manager's name!");
                     return false
                 }
             }
@@ -33,11 +28,11 @@ function memberInfo() {
             name: 'id',
             message: 'Enter your employee ID.',
             validate: idInput => {
-                if (idInput) {
-                    return true;
-                } else {
-                    console.log("Please enter your employee ID!");
+                if (isNaN(idInput)) {
+                    console.log("Please enter the manager's ID!")
                     return false
+                } else {
+                    return true
                 }
             }
         },
@@ -46,10 +41,11 @@ function memberInfo() {
             name: 'email',
             message: 'Enter your email address.',
             validate: emailInput => {
-                if (emailInput) {
-                    return true;
+                valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInput)
+                if (valid) {
+                    return true
                 } else {
-                    console.log("Please enter your email address!");
+                    console.log("Please enter a valid email address!");
                     return false
                 }
             }
@@ -57,15 +53,25 @@ function memberInfo() {
         {
             type: 'input',
             name: 'number',
-            message: 'Enter your office number.',
+            message: "Enter the manager's office number.",
             validate: numberInput => {
-                if (numberInput) {
-                    return true;
-                } else {
-                    console.log("Please enter your office number!");
+                if (isNaN(numberInput)) {
+                    console.log("Please enter an office number!")
                     return false
+                } else {
+                    return true
                 }
             }
         }
     ])
+    .then(managerInfo => {
+        const {name, id, email, number} = managerInfo
+        const manager = new Manager (name, id, email, number)
+
+        // push to team array
+        employeesArr.push(manager)
+        console.log(manager);
+    })
 }
+
+managerInfo()
