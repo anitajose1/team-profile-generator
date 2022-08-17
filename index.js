@@ -64,8 +64,8 @@ function managerInfo() {
             }
         }
     ])
-    .then(managerInfo => {
-        const {name, id, email, number} = managerInfo
+    .then(managerInput => {
+        const {name, id, email, number} = managerInput
         const manager = new Manager (name, id, email, number)
 
         // push to team array
@@ -74,7 +74,7 @@ function managerInfo() {
     })
 }
 
-// 
+// questions for employee data
 const employeeInfo = () => {
     console.log(`
     ==========================
@@ -162,4 +162,27 @@ const employeeInfo = () => {
             default: false
         }
     ])
+    .then(employeeData => {
+        let {name, id, email, github, school, confirmAddEmployee} = employeeData
+        let employee
+
+        // data for engineer
+        if (role === 'Engineer') {
+            employee = new Engineer(name, id, email, github)
+            console.log(employee);
+        }
+        // data for intern
+        else if (role === 'Intern') {
+            employee = new Intern(name, id, email, school)
+            console.log(employee);
+        } 
+
+        employeesArr.push(employee)
+
+        if (confirmAddEmployee) {
+            return employeeInfo(employeesArr)
+        } else {
+            return employeesArr
+        }
+    })
 }
