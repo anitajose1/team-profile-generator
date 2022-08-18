@@ -3,6 +3,9 @@ const fs = require("fs")
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
+
+const createHtml = require('./src/createHtml')
+
 // array for team
 const employeesArr = []
 
@@ -186,3 +189,27 @@ const employeeInfo = () => {
         }
     })
 }
+
+// generate html page
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err =>{
+        if (err) {
+            console.log(err);
+            return
+        } else {
+            console.log("Your team profile is created!");
+        }
+    })
+}
+
+managerInfo()
+.then(employeeInfo)
+.then(employeesArr => {
+    return createHtml(employeesArr)
+})
+.then(pageHtml => {
+    return writeFile(pageHtml)
+})
+.catch(err => {
+    console.log(err);
+})
