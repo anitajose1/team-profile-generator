@@ -3,14 +3,14 @@
 // create manager card
 const managerCard = function (manager) {
     return `
-    <div class=>
-        <div class=>
+    <div class="">
+        <div class="card-item">
             <div class="card-header">
                 <h3>${manager.name}</h3>
                 <h4>Manager</h4>
             </div>
 
-            <div class="card=body">
+            <div class="card-body">
                 <p class="id">ID: ${manager.id}</p>
                 <p class="email">Email: <a href="mailto:${manager.email}">${manager.email}</a></p>
                 <p class="office">Office Number: ${manager.number}</p>
@@ -25,7 +25,7 @@ const managerCard = function (manager) {
 const engineerCard = function (engineer) {
     return `
     <div class="">
-        <div class="">
+        <div class="card-item">
             <div class="card-header">
                 <h3>${engineer.name}</h3>
                 <h4>Engineer</h4>
@@ -33,7 +33,7 @@ const engineerCard = function (engineer) {
             <div class="card-body">
                 <p class="id">ID: ${engineer.id}</p>
                 <p class="email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
-                <p class="github">GitHub: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
+                <p class="github">GitHub: <a href="https://github.com/${engineer.github}" target="_blank">${engineer.github}</a></p>
             </div>
         </div>
     </div>
@@ -43,15 +43,15 @@ const engineerCard = function (engineer) {
 // create intern card
 const internCard = function (intern) {
     return `
-    <div class="col-4 mt-4">
-        <div class="">
-            <div class="">
+    <div class="">
+        <div class="card-item">
+            <div class="card-header">
                 <h3>${intern.name}</h3>
                 <h4>Intern</h4>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${intern.id}</p>
-                <p class="email">Email:<a href="mailto:${intern.email}">${intern.email}</a></p>
+                <p class="email">Email: <a href="mailto:${intern.email}">${intern.email}</a></p>
                 <p class="school">School: ${intern.school}</p>
             </div>
         </div>
@@ -99,24 +99,26 @@ createHtml = (data) => {
 const generateProfilePage = function(employeeCards) {
     return `
     <!DOCTYPE html>
-    <html lang="en>
+    <html lang="en">
+
     <head>
         <meta charset="UTF-8>
         <meta name="viewport content="width=device-width, initial-scale=1.0">
         <title>Team Profile</title>
-        <link rel="stylesheet" href="style.css"
+        <link rel="stylesheet" href="style.css">
     </head>
+
     <body>
 
         <header>
-            <nav =class="">
-
+            <nav class="header">
+                <h1 class="header-title">Team Profile</h1>
             </nav>
         </header>
 
-        <main>
-            <div>
-                <div>
+        <main class="main-body">
+            <div class="cards-container">
+                <div class="cards-container2>
                     <!-- Team Profile Cards -->
                     ${employeeCards}
                 </div>

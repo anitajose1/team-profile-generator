@@ -10,8 +10,8 @@ const createHtml = require('./src/createHtml')
 const employeesArr = []
 
 // questions for manager data
-function managerInfo() {
-    inquirer
+const managerInfo = () => {
+    return inquirer
     .prompt([
         {
             type: 'input',
@@ -74,6 +74,7 @@ function managerInfo() {
         // push to team array
         employeesArr.push(manager)
         console.log(manager);
+        return manager
     })
 }
 
@@ -170,12 +171,12 @@ const employeeInfo = () => {
         let employee
 
         // data for engineer
-        if (role === 'Engineer') {
+        if (employeeData.role === 'Engineer') {
             employee = new Engineer(name, id, email, github)
             console.log(employee);
         }
         // data for intern
-        else if (role === 'Intern') {
+        else if (employeeData.role === 'Intern') {
             employee = new Intern(name, id, email, school)
             console.log(employee);
         } 
