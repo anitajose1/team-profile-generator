@@ -55,7 +55,7 @@ const managerInfo = () => {
         },
         {
             type: 'input',
-            name: 'number',
+            name: 'officeNumber',
             message: "Enter the manager's office number.",
             validate: numberInput => {
                 if (isNaN(numberInput)) {
@@ -68,8 +68,8 @@ const managerInfo = () => {
         }
     ])
     .then(managerInput => {
-        const {name, id, email, number} = managerInput
-        const manager = new Manager (name, id, email, number)
+        const {name, id, email, officeNumber} = managerInput
+        const manager = new Manager (name, id, email, officeNumber)
 
         // push to team array
         employeesArr.push(manager)

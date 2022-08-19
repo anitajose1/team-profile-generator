@@ -1,25 +1,33 @@
 const Engineer = require('../lib/Engineer')
 
-test('creates an engineer object', () => {
-    // const engineer = new Engineer('Sarah', 'sarah.george@gmail.com', 218)
+// create test suite containing tests
+describe("engineer tests suite", () => {
+    const engineer = new Engineer("Sarah", 218, "sarah.george@gmail.com");
+  
+    // get name from getName()
+    test("gets engineer's name", () => {
+      expect(engineer.getName()).toEqual("Sarah");
+      expect(engineer.getName()).not.toEqual("abcd");
+    });
+  
+    // get id from getId()
+    test("gets engineer's id", () => {
+      expect(engineer.getId()).toEqual(218);
+      expect(engineer.getId()).not.toEqual(123);
+    });
+  
+    // get email from getEmail()
+    test("gets engineer's email", () => {
+      expect(engineer.getEmail()).toEqual("sarah.george@gmail.com");
+    });
 
-    // expect(engineer.github).toEqual(expect.any(String))
-
-    const engineer = new Engineer()
-
-    expect(typeof(engineer)).toBe('object')
+    // get github from getGithub()
+    test("gets engineer's github username", () => {
+    expect(engineer.getGithub()).toBe(engineer.github)
 })
-
-// get github from getGithub()
-test("gets engineer's github username", () => {
-    const engineer = new Engineer('Sarah', 'sarah.george@gmail.com', 218)
-
-    expect(engineer.getGithub()).toEqual(expect.stringContaining(engineer.github.toString()))
-})
-
-// get role from getRole()
-test("gets employee's role", () => {
-    const engineer = new Engineer('Sarah', 'sarah.george@gmail.com', 218)
-
-    expect(engineer.getRole()).toEqual('Engineer')
-})
+  
+    // get role from getRole()
+    test("gets employee's role", () => {
+      expect(engineer.getRole()).toEqual("Engineer");
+    });
+  });
