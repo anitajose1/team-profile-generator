@@ -17,13 +17,13 @@ body {
 
 .main-body {
     background-color:rgb(21, 145, 138);
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: 30px;
+    padding-bottom: 40px;
 }
 
 .card-item {
     background-color: bisque;
-    border-color: darkolivegreen;
+    margin: 15px;
 }
 
 .card-header {
@@ -35,12 +35,8 @@ body {
 
 .cards-container {
     display: flex;
-    justify-content: space-evenly;
-}
-
-.cards-container2 {
-    display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .card-body {
