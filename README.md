@@ -9,7 +9,7 @@
   [Tests](#tests)  
   [Questions](#questions)
   ## Description
-  Team Profile Generator a Node.js command-line application that takes in information about employees on a software engineering team and generates an HTML webpage that displays summaries for each person. The codebase also includes unit tests for checking the functionality of class constructors.  
+  Team Profile Generator is a Node.js command-line application that takes in information about employees on a software engineering team and generates an HTML webpage that displays summaries for each person. The codebase also includes unit tests for checking the functionality of class constructors.  
     
 
   ![screenshot of deployed application](./dist/screenshot.png)
